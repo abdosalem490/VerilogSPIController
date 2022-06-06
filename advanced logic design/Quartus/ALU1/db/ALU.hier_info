@@ -1,0 +1,29 @@
+|ALU
+pin_name4 <= full_adder_one_bit:inst.pin_name4
+pin_name1 => full_adder_one_bit:inst.pin_name1
+pin_name2 => full_adder_one_bit:inst.pin_name2
+pin_name3 => full_adder_one_bit:inst.pin_name3
+pin_name5 <= full_adder_one_bit:inst.pin_name5
+
+
+|ALU|full_adder_one_bit:inst
+pin_name4 <= XOR3:xor_adder.OUT1
+pin_name3 => XOR3:xor_adder.IN3
+pin_name3 => inst1.IN1
+pin_name3 => inst2.IN1
+pin_name1 => XOR3:xor_adder.IN1
+pin_name1 => inst1.IN0
+pin_name1 => inst.IN0
+pin_name2 => XOR3:xor_adder.IN2
+pin_name2 => inst2.IN0
+pin_name2 => inst.IN1
+pin_name5 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALU|full_adder_one_bit:inst|XOR3:xor_adder
+OUT <= 1.DB_MAX_OUTPUT_PORT_TYPE
+IN1 => 1.IN0
+IN2 => 3.IN0
+IN3 => 3.IN1
+
+

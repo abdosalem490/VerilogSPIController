@@ -1,0 +1,195 @@
+|ALU
+OUT[0] <= ALU_inside:inst.OUT0
+OUT[1] <= ALU_inside:inst.OUT1
+OUT[2] <= ALU_inside:inst.OUT2
+OUT[3] <= ALU_inside:inst.OUT3
+x[0] => ALU_inside:inst.X0
+x[1] => ALU_inside:inst.X1
+x[2] => ALU_inside:inst.X2
+x[3] => ALU_inside:inst.X3
+Y[0] => ALU_inside:inst.Y0
+Y[1] => ALU_inside:inst.Y1
+Y[2] => ALU_inside:inst.Y2
+Y[3] => ALU_inside:inst.Y3
+S[0] => ALU_inside:inst.s0
+S[1] => ALU_inside:inst.s1
+
+
+|ALU|ALU_inside:inst
+OUT0 <= MUX_four_by_one:inst8.OUT
+X0 => MUX_four_by_one:inst8.X0
+X0 => full_adder_four_bit:inst7.X0
+X0 => And_four_bit:inst.X0
+Y0 => MUX_four_by_one:inst8.X1
+Y0 => full_adder_four_bit:inst7.X2
+Y0 => And_four_bit:inst.Y0
+X1 => full_adder_four_bit:inst7.Y0
+X1 => And_four_bit:inst.X1
+X1 => MUX_four_by_one:inst9.X0
+X2 => full_adder_four_bit:inst7.X1
+X2 => And_four_bit:inst.X2
+X2 => MUX_four_by_one:inst10.X0
+X3 => full_adder_four_bit:inst7.Y1
+X3 => And_four_bit:inst.X3
+X3 => MUX_four_by_one:inst11.X0
+Y1 => full_adder_four_bit:inst7.Y2
+Y1 => And_four_bit:inst.Y1
+Y1 => MUX_four_by_one:inst9.X1
+Y2 => full_adder_four_bit:inst7.X3
+Y2 => And_four_bit:inst.Y2
+Y2 => MUX_four_by_one:inst10.X1
+Y3 => full_adder_four_bit:inst7.Y3
+Y3 => And_four_bit:inst.Y3
+Y3 => MUX_four_by_one:inst11.X1
+s0 => MUX_four_by_one:inst8.a
+s0 => MUX_four_by_one:inst9.a
+s0 => MUX_four_by_one:inst10.a
+s0 => MUX_four_by_one:inst11.a
+s1 => MUX_four_by_one:inst8.b
+s1 => MUX_four_by_one:inst9.b
+s1 => MUX_four_by_one:inst10.b
+s1 => MUX_four_by_one:inst11.b
+OUT1 <= MUX_four_by_one:inst9.OUT
+OUT2 <= MUX_four_by_one:inst10.OUT
+OUT3 <= MUX_four_by_one:inst11.OUT
+
+
+|ALU|ALU_inside:inst|MUX_four_by_one:inst8
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|ALU|ALU_inside:inst|full_adder_four_bit:inst7
+S0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+X0 => inst6.IN0
+X2 => inst.IN1
+X2 => inst6.IN1
+S1 <= full_adder_one_bit:inst2.S
+Y0 => full_adder_one_bit:inst2.x
+Y2 => full_adder_one_bit:inst2.y
+S2 <= full_adder_one_bit:inst3.S
+X1 => full_adder_one_bit:inst3.x
+X3 => full_adder_one_bit:inst3.y
+S3 <= full_adder_one_bit:inst4.S
+Y1 => full_adder_one_bit:inst4.x
+Y3 => full_adder_one_bit:inst4.y
+Carry <= full_adder_one_bit:inst4.Cout
+
+
+|ALU|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst2
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALU|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst3
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALU|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst4
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|ALU|ALU_inside:inst|And_four_bit:inst
+A0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+Y0 => inst.IN1
+A1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+X1 => inst1.IN0
+Y1 => inst1.IN1
+A2 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+X2 => inst2.IN0
+Y2 => inst2.IN1
+A3 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+X3 => inst3.IN0
+Y3 => inst3.IN1
+
+
+|ALU|ALU_inside:inst|MUX_four_by_one:inst9
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|ALU|ALU_inside:inst|MUX_four_by_one:inst10
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|ALU|ALU_inside:inst|MUX_four_by_one:inst11
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+

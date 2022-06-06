@@ -1,0 +1,59 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dD:/Quartus/EU/simulation/qsim
+vEU
+Z1 !s110 1636982389
+!i10b 1
+!s100 No?hejHV7T9gjn3CCT[jZ2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IC@zjF]_WVQB=NRVgPJiST3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1636982388
+8EU.vo
+FEU.vo
+!i122 72
+L0 32 1832
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1636982389.000000
+!s107 EU.vo|
+!s90 -work|work|EU.vo|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+n@e@u
+vEU_vlg_vec_tst
+R1
+!i10b 1
+!s100 F1g2<`mfQcfY^VJA6zNDI3
+R2
+IdWbHbk^=]mX:EoaUdTL293
+R3
+R0
+w1636982387
+8Waveform22.vwf.vt
+FWaveform22.vwf.vt
+!i122 73
+L0 30 113
+R4
+r1
+!s85 0
+31
+R5
+!s107 Waveform22.vwf.vt|
+!s90 -work|work|Waveform22.vwf.vt|
+!i113 1
+R6
+R7
+n@e@u_vlg_vec_tst

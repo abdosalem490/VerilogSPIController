@@ -1,0 +1,622 @@
+|EU
+ALU[0] <= OUT[0].DB_MAX_OUTPUT_PORT_TYPE
+ALU[1] <= OUT[1].DB_MAX_OUTPUT_PORT_TYPE
+ALU[2] <= OUT[2].DB_MAX_OUTPUT_PORT_TYPE
+ALU[3] <= OUT[3].DB_MAX_OUTPUT_PORT_TYPE
+Input[0] => DecodingCircuit:inst.COMMAND[0]
+Input[1] => DecodingCircuit:inst.COMMAND[1]
+Input[2] => DecodingCircuit:inst.COMMAND[2]
+Input[3] => DecodingCircuit:inst.COMMAND[3]
+Input[4] => DecodingCircuit:inst.COMMAND[4]
+Input[5] => DecodingCircuit:inst.COMMAND[5]
+Input[6] => DecodingCircuit:inst.COMMAND[6]
+Input[7] => DecodingCircuit:inst.COMMAND[7]
+Input[8] => DecodingCircuit:inst.COMMAND[8]
+CLK => inst9.IN1
+CLK => inst7.IN1
+CLK => inst8.IN1
+CLK => inst10.IN1
+VAL_REG_ONE[0] <= regbdf:inst4.Q[0]
+VAL_REG_ONE[1] <= regbdf:inst4.Q[1]
+VAL_REG_ONE[2] <= regbdf:inst4.Q[2]
+VAL_REG_ONE[3] <= regbdf:inst4.Q[3]
+VAL_REG_THREE[0] <= regbdf:inst6.Q[0]
+VAL_REG_THREE[1] <= regbdf:inst6.Q[1]
+VAL_REG_THREE[2] <= regbdf:inst6.Q[2]
+VAL_REG_THREE[3] <= regbdf:inst6.Q[3]
+VAL_REG_TWO[0] <= regbdf:inst5.Q[0]
+VAL_REG_TWO[1] <= regbdf:inst5.Q[1]
+VAL_REG_TWO[2] <= regbdf:inst5.Q[2]
+VAL_REG_TWO[3] <= regbdf:inst5.Q[3]
+VAL_REG_ZERO[0] <= regbdf:inst3.Q[0]
+VAL_REG_ZERO[1] <= regbdf:inst3.Q[1]
+VAL_REG_ZERO[2] <= regbdf:inst3.Q[2]
+VAL_REG_ZERO[3] <= regbdf:inst3.Q[3]
+
+
+|EU|ALU:inst2
+OUT[0] <= ALU_inside:inst.OUT0
+OUT[1] <= ALU_inside:inst.OUT1
+OUT[2] <= ALU_inside:inst.OUT2
+OUT[3] <= ALU_inside:inst.OUT3
+x[0] => ALU_inside:inst.X0
+x[1] => ALU_inside:inst.X1
+x[2] => ALU_inside:inst.X2
+x[3] => ALU_inside:inst.X3
+Y[0] => ALU_inside:inst.Y0
+Y[1] => ALU_inside:inst.Y1
+Y[2] => ALU_inside:inst.Y2
+Y[3] => ALU_inside:inst.Y3
+S[0] => ALU_inside:inst.s0
+S[1] => ALU_inside:inst.s1
+
+
+|EU|ALU:inst2|ALU_inside:inst
+OUT0 <= MUX_four_by_one:inst8.OUT
+X0 => MUX_four_by_one:inst8.X0
+X0 => full_adder_four_bit:inst7.X0
+X0 => And_four_bit:inst.X0
+Y0 => MUX_four_by_one:inst8.X1
+Y0 => full_adder_four_bit:inst7.X2
+Y0 => And_four_bit:inst.Y0
+X1 => full_adder_four_bit:inst7.Y0
+X1 => And_four_bit:inst.X1
+X1 => MUX_four_by_one:inst9.X0
+X2 => full_adder_four_bit:inst7.X1
+X2 => And_four_bit:inst.X2
+X2 => MUX_four_by_one:inst10.X0
+X3 => full_adder_four_bit:inst7.Y1
+X3 => And_four_bit:inst.X3
+X3 => MUX_four_by_one:inst11.X0
+Y1 => full_adder_four_bit:inst7.Y2
+Y1 => And_four_bit:inst.Y1
+Y1 => MUX_four_by_one:inst9.X1
+Y2 => full_adder_four_bit:inst7.X3
+Y2 => And_four_bit:inst.Y2
+Y2 => MUX_four_by_one:inst10.X1
+Y3 => full_adder_four_bit:inst7.Y3
+Y3 => And_four_bit:inst.Y3
+Y3 => MUX_four_by_one:inst11.X1
+s0 => MUX_four_by_one:inst8.a
+s0 => MUX_four_by_one:inst9.a
+s0 => MUX_four_by_one:inst10.a
+s0 => MUX_four_by_one:inst11.a
+s1 => MUX_four_by_one:inst8.b
+s1 => MUX_four_by_one:inst9.b
+s1 => MUX_four_by_one:inst10.b
+s1 => MUX_four_by_one:inst11.b
+OUT1 <= MUX_four_by_one:inst9.OUT
+OUT2 <= MUX_four_by_one:inst10.OUT
+OUT3 <= MUX_four_by_one:inst11.OUT
+
+
+|EU|ALU:inst2|ALU_inside:inst|MUX_four_by_one:inst8
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|ALU:inst2|ALU_inside:inst|full_adder_four_bit:inst7
+S0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+X0 => inst6.IN0
+X2 => inst.IN1
+X2 => inst6.IN1
+S1 <= full_adder_one_bit:inst2.S
+Y0 => full_adder_one_bit:inst2.x
+Y2 => full_adder_one_bit:inst2.y
+S2 <= full_adder_one_bit:inst3.S
+X1 => full_adder_one_bit:inst3.x
+X3 => full_adder_one_bit:inst3.y
+S3 <= full_adder_one_bit:inst4.S
+Y1 => full_adder_one_bit:inst4.x
+Y3 => full_adder_one_bit:inst4.y
+Carry <= full_adder_one_bit:inst4.Cout
+
+
+|EU|ALU:inst2|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst2
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EU|ALU:inst2|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst3
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EU|ALU:inst2|ALU_inside:inst|full_adder_four_bit:inst7|full_adder_one_bit:inst4
+S <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+x => inst3.IN0
+x => inst1.IN0
+x => inst.IN0
+y => inst3.IN1
+y => inst2.IN0
+y => inst.IN1
+Cin => inst5.IN1
+Cin => inst1.IN1
+Cin => inst2.IN1
+Cout <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EU|ALU:inst2|ALU_inside:inst|And_four_bit:inst
+A0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+Y0 => inst.IN1
+A1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+X1 => inst1.IN0
+Y1 => inst1.IN1
+A2 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+X2 => inst2.IN0
+Y2 => inst2.IN1
+A3 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+X3 => inst3.IN0
+Y3 => inst3.IN1
+
+
+|EU|ALU:inst2|ALU_inside:inst|MUX_four_by_one:inst9
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|ALU:inst2|ALU_inside:inst|MUX_four_by_one:inst10
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|ALU:inst2|ALU_inside:inst|MUX_four_by_one:inst11
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst
+INS[0] <= COMMAND[7].DB_MAX_OUTPUT_PORT_TYPE
+INS[1] <= COMMAND[8].DB_MAX_OUTPUT_PORT_TYPE
+COMMAND[0] => And_four_bit:inst14.X0
+COMMAND[0] => fourRegMUX:inst2.S[0]
+COMMAND[1] => And_four_bit:inst14.X1
+COMMAND[1] => fourRegMUX:inst2.S[1]
+COMMAND[2] => And_four_bit:inst14.X2
+COMMAND[3] => And_four_bit:inst14.X3
+COMMAND[4] => And_four_bit:inst14.Y0
+COMMAND[4] => And_four_bit:inst14.Y1
+COMMAND[4] => And_four_bit:inst14.Y2
+COMMAND[4] => And_four_bit:inst14.Y3
+COMMAND[4] => inst15.IN0
+COMMAND[5] => fourRegMUX:inst.S[0]
+COMMAND[5] => Four_one_DEMUX:inst6.A0
+COMMAND[6] => fourRegMUX:inst.S[1]
+COMMAND[6] => Four_one_DEMUX:inst6.A1
+COMMAND[7] => INS[0].DATAIN
+COMMAND[8] => INS[1].DATAIN
+OUTA[0] <= fourRegMUX:inst.OUT[0]
+OUTA[1] <= fourRegMUX:inst.OUT[1]
+OUTA[2] <= fourRegMUX:inst.OUT[2]
+OUTA[3] <= fourRegMUX:inst.OUT[3]
+regOne[0] => fourRegMUX:inst.busOne[0]
+regOne[0] => fourRegMUX:inst2.busOne[0]
+regOne[1] => fourRegMUX:inst.busOne[1]
+regOne[1] => fourRegMUX:inst2.busOne[1]
+regOne[2] => fourRegMUX:inst.busOne[2]
+regOne[2] => fourRegMUX:inst2.busOne[2]
+regOne[3] => fourRegMUX:inst.busOne[3]
+regOne[3] => fourRegMUX:inst2.busOne[3]
+regThree[0] => fourRegMUX:inst.busThree[0]
+regThree[0] => fourRegMUX:inst2.busThree[0]
+regThree[1] => fourRegMUX:inst.busThree[1]
+regThree[1] => fourRegMUX:inst2.busThree[1]
+regThree[2] => fourRegMUX:inst.busThree[2]
+regThree[2] => fourRegMUX:inst2.busThree[2]
+regThree[3] => fourRegMUX:inst.busThree[3]
+regThree[3] => fourRegMUX:inst2.busThree[3]
+regTwo[0] => fourRegMUX:inst.busTwo[0]
+regTwo[0] => fourRegMUX:inst2.busTwo[0]
+regTwo[1] => fourRegMUX:inst.busTwo[1]
+regTwo[1] => fourRegMUX:inst2.busTwo[1]
+regTwo[2] => fourRegMUX:inst.busTwo[2]
+regTwo[2] => fourRegMUX:inst2.busTwo[2]
+regTwo[3] => fourRegMUX:inst.busTwo[3]
+regTwo[3] => fourRegMUX:inst2.busTwo[3]
+regZero[0] => fourRegMUX:inst.busZero[0]
+regZero[0] => fourRegMUX:inst2.busZero[0]
+regZero[1] => fourRegMUX:inst.busZero[1]
+regZero[1] => fourRegMUX:inst2.busZero[1]
+regZero[2] => fourRegMUX:inst.busZero[2]
+regZero[2] => fourRegMUX:inst2.busZero[2]
+regZero[3] => fourRegMUX:inst.busZero[3]
+regZero[3] => fourRegMUX:inst2.busZero[3]
+OUTB[0] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+OUTB[1] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+OUTB[2] <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+OUTB[3] <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+regNUM[0] <= Four_one_DEMUX:inst6.O0
+regNUM[1] <= Four_one_DEMUX:inst6.O1
+regNUM[2] <= Four_one_DEMUX:inst6.O2
+regNUM[3] <= Four_one_DEMUX:inst6.O3
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst
+OUT[0] <= MUX_four_by_one:inst.OUT
+OUT[1] <= MUX_four_by_one:inst6.OUT
+OUT[2] <= MUX_four_by_one:inst7.OUT
+OUT[3] <= MUX_four_by_one:inst8.OUT
+busZero[0] => MUX_four_by_one:inst.X0
+busZero[1] => MUX_four_by_one:inst6.X0
+busZero[2] => MUX_four_by_one:inst7.X0
+busZero[3] => MUX_four_by_one:inst8.X0
+busOne[0] => MUX_four_by_one:inst.X1
+busOne[1] => MUX_four_by_one:inst6.X1
+busOne[2] => MUX_four_by_one:inst7.X1
+busOne[3] => MUX_four_by_one:inst8.X1
+busTwo[0] => MUX_four_by_one:inst.X2
+busTwo[1] => MUX_four_by_one:inst6.X2
+busTwo[2] => MUX_four_by_one:inst7.X2
+busTwo[3] => MUX_four_by_one:inst8.X2
+busThree[0] => MUX_four_by_one:inst.X3
+busThree[1] => MUX_four_by_one:inst6.X3
+busThree[2] => MUX_four_by_one:inst7.X3
+busThree[3] => MUX_four_by_one:inst8.X3
+S[0] => MUX_four_by_one:inst.a
+S[0] => MUX_four_by_one:inst6.a
+S[0] => MUX_four_by_one:inst7.a
+S[0] => MUX_four_by_one:inst8.a
+S[1] => MUX_four_by_one:inst.b
+S[1] => MUX_four_by_one:inst6.b
+S[1] => MUX_four_by_one:inst7.b
+S[1] => MUX_four_by_one:inst8.b
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst|MUX_four_by_one:inst
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst|MUX_four_by_one:inst6
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst|MUX_four_by_one:inst7
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst|MUX_four_by_one:inst8
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|And_four_bit:inst14
+A0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+Y0 => inst.IN1
+A1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+X1 => inst1.IN0
+Y1 => inst1.IN1
+A2 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+X2 => inst2.IN0
+Y2 => inst2.IN1
+A3 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+X3 => inst3.IN0
+Y3 => inst3.IN1
+
+
+|EU|DecodingCircuit:inst|And_four_bit:inst13
+A0 <= inst.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst.IN0
+Y0 => inst.IN1
+A1 <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+X1 => inst1.IN0
+Y1 => inst1.IN1
+A2 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+X2 => inst2.IN0
+Y2 => inst2.IN1
+A3 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+X3 => inst3.IN0
+Y3 => inst3.IN1
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst2
+OUT[0] <= MUX_four_by_one:inst.OUT
+OUT[1] <= MUX_four_by_one:inst6.OUT
+OUT[2] <= MUX_four_by_one:inst7.OUT
+OUT[3] <= MUX_four_by_one:inst8.OUT
+busZero[0] => MUX_four_by_one:inst.X0
+busZero[1] => MUX_four_by_one:inst6.X0
+busZero[2] => MUX_four_by_one:inst7.X0
+busZero[3] => MUX_four_by_one:inst8.X0
+busOne[0] => MUX_four_by_one:inst.X1
+busOne[1] => MUX_four_by_one:inst6.X1
+busOne[2] => MUX_four_by_one:inst7.X1
+busOne[3] => MUX_four_by_one:inst8.X1
+busTwo[0] => MUX_four_by_one:inst.X2
+busTwo[1] => MUX_four_by_one:inst6.X2
+busTwo[2] => MUX_four_by_one:inst7.X2
+busTwo[3] => MUX_four_by_one:inst8.X2
+busThree[0] => MUX_four_by_one:inst.X3
+busThree[1] => MUX_four_by_one:inst6.X3
+busThree[2] => MUX_four_by_one:inst7.X3
+busThree[3] => MUX_four_by_one:inst8.X3
+S[0] => MUX_four_by_one:inst.a
+S[0] => MUX_four_by_one:inst6.a
+S[0] => MUX_four_by_one:inst7.a
+S[0] => MUX_four_by_one:inst8.a
+S[1] => MUX_four_by_one:inst.b
+S[1] => MUX_four_by_one:inst6.b
+S[1] => MUX_four_by_one:inst7.b
+S[1] => MUX_four_by_one:inst8.b
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst2|MUX_four_by_one:inst
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst2|MUX_four_by_one:inst6
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst2|MUX_four_by_one:inst7
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|fourRegMUX:inst2|MUX_four_by_one:inst8
+OUT <= inst6.DB_MAX_OUTPUT_PORT_TYPE
+X0 => inst5.IN0
+b => inst2.IN0
+b => inst2.IN1
+b => inst.IN1
+b => inst3.IN1
+a => inst1.IN0
+a => inst1.IN1
+a => inst.IN2
+a => inst4.IN2
+X3 => inst.IN0
+X1 => inst4.IN0
+X2 => inst3.IN0
+
+
+|EU|DecodingCircuit:inst|Four_one_DEMUX:inst6
+O0 <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+A0 => inst.IN0
+A0 => inst3.IN0
+A0 => inst5.IN1
+A1 => inst1.IN0
+A1 => inst4.IN0
+A1 => inst5.IN0
+O1 <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+O2 <= inst4.DB_MAX_OUTPUT_PORT_TYPE
+O3 <= inst5.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|EU|regbdf:inst4
+Q[0] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+RESET => inst.ACLR
+RESET => inst1.ACLR
+RESET => inst2.ACLR
+RESET => inst3.ACLR
+CLK => inst.CLK
+CLK => inst1.CLK
+CLK => inst2.CLK
+CLK => inst3.CLK
+D[0] => inst3.DATAIN
+D[1] => inst2.DATAIN
+D[2] => inst1.DATAIN
+D[3] => inst.DATAIN
+SET => inst.PRESET
+SET => inst1.PRESET
+SET => inst2.PRESET
+SET => inst3.PRESET
+
+
+|EU|regbdf:inst6
+Q[0] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+RESET => inst.ACLR
+RESET => inst1.ACLR
+RESET => inst2.ACLR
+RESET => inst3.ACLR
+CLK => inst.CLK
+CLK => inst1.CLK
+CLK => inst2.CLK
+CLK => inst3.CLK
+D[0] => inst3.DATAIN
+D[1] => inst2.DATAIN
+D[2] => inst1.DATAIN
+D[3] => inst.DATAIN
+SET => inst.PRESET
+SET => inst1.PRESET
+SET => inst2.PRESET
+SET => inst3.PRESET
+
+
+|EU|regbdf:inst5
+Q[0] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+RESET => inst.ACLR
+RESET => inst1.ACLR
+RESET => inst2.ACLR
+RESET => inst3.ACLR
+CLK => inst.CLK
+CLK => inst1.CLK
+CLK => inst2.CLK
+CLK => inst3.CLK
+D[0] => inst3.DATAIN
+D[1] => inst2.DATAIN
+D[2] => inst1.DATAIN
+D[3] => inst.DATAIN
+SET => inst.PRESET
+SET => inst1.PRESET
+SET => inst2.PRESET
+SET => inst3.PRESET
+
+
+|EU|regbdf:inst3
+Q[0] <= inst3.DB_MAX_OUTPUT_PORT_TYPE
+Q[1] <= inst2.DB_MAX_OUTPUT_PORT_TYPE
+Q[2] <= inst1.DB_MAX_OUTPUT_PORT_TYPE
+Q[3] <= inst.DB_MAX_OUTPUT_PORT_TYPE
+RESET => inst.ACLR
+RESET => inst1.ACLR
+RESET => inst2.ACLR
+RESET => inst3.ACLR
+CLK => inst.CLK
+CLK => inst1.CLK
+CLK => inst2.CLK
+CLK => inst3.CLK
+D[0] => inst3.DATAIN
+D[1] => inst2.DATAIN
+D[2] => inst1.DATAIN
+D[3] => inst.DATAIN
+SET => inst.PRESET
+SET => inst1.PRESET
+SET => inst2.PRESET
+SET => inst3.PRESET
+
+
