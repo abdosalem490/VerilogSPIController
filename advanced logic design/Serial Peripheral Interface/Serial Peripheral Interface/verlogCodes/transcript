@@ -1,0 +1,129 @@
+# Compile of Master.v was successful.
+# Compile of Slave.v was successful.
+# Compile of Slave_tb.v was successful.
+# Compile of Master_tb.v was successful.
+# Compile of DevelopmentTB.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.Master_tb
+# vsim -gui work.Master_tb 
+# Start time: 09:37:32 on Jun 01,2021
+# Loading work.Master_tb
+# Loading work.Master
+run -all
+#           1
+# Success in Sending from Master
+# Success in Receiving to Master
+#           2
+# Success in Sending from Master
+# Success in Receiving to Master
+#           3
+# Success in Sending from Master
+# Success in Receiving to Master
+#           4
+# Success in Sending from Master
+# Success in Receiving to Master
+#           5
+# Success in Sending from Master
+# Success in Receiving to Master
+#           6
+# Success in Sending from Master
+# Success in Receiving to Master
+#           7
+# Success in Sending from Master
+# Success in Receiving to Master
+#           8
+# Success in Sending from Master
+# Success in Receiving to Master
+#           9
+# Success in Sending from Master
+# Success in Receiving to Master
+#          10
+# Success in Sending from Master
+# Success in Receiving to Master
+# The Number of Failed Tests :           0
+# ** Note: $finish    : C:/Users/abdo/Desktop/modelSim/Serial Peripheral Interface/verlogCodes/Master_tb.v(360)
+#    Time: 905 ps  Iteration: 0  Instance: /Master_tb
+# 1
+# Break in Module Master_tb at C:/Users/abdo/Desktop/modelSim/Serial Peripheral Interface/verlogCodes/Master_tb.v line 360
+quit -sim
+vsim -gui work.DevelopmentTB
+# End time: 09:37:53 on Jun 01,2021, Elapsed time: 0:00:21
+# Errors: 0, Warnings: 12
+# vsim -gui work.DevelopmentTB 
+# Start time: 09:37:53 on Jun 01,2021
+# Loading work.DevelopmentTB
+# Loading work.Master
+# Loading work.Slave
+run -all
+# Running test set           1
+# From Slave 0 to Master: Success
+# From Master to Slave 0: Success
+# From Slave 1 to Master: Success
+# From Master to Slave 1: Success
+# From Slave 2 to Master: Success
+# From Master to Slave 2: Success
+# Running test set           2
+# From Slave 0 to Master: Success
+# From Master to Slave 0: Success
+# From Slave 1 to Master: Success
+# From Master to Slave 1: Success
+# From Slave 2 to Master: Success
+# From Master to Slave 2: Success
+# SUCCESS: All          12 testcases have been successful
+# Break key hit
+# Simulation stop requested.
+quit -sim
+# End time: 09:38:05 on Jun 01,2021, Elapsed time: 0:00:12
+# Errors: 0, Warnings: 1
+# Compile of Master.v was successful.
+# Compile of Slave.v was successful.
+# Compile of Slave_tb.v was successful.
+# Compile of Master_tb.v was successful.
+# Compile of DevelopmentTB.v was successful.
+# 5 compiles, 0 failed with no errors.
+vsim -gui work.slave_tb
+# vsim -gui work.slave_tb 
+# Start time: 09:38:17 on Jun 01,2021
+# Loading work.slave_tb
+# Loading work.Slave
+run -all
+# Test case 1: Sending is successful.
+# Test case 1: Recieving is successful.
+# 
+# Test case 2: Sending is successful.
+# Test case 2: Recieving is successful.
+# 
+# Test case 3: Sending is successful.
+# Test case 3: Recieving is successful.
+# 
+# Test case 4: Sending is successful.
+# Test case 4: Recieving is successful.
+# 
+# Test case 5: Sending is successful.
+# Test case 5: Recieving is successful.
+# 
+# Test case 6: Sending is successful.
+# Test case 6: Recieving is successful.
+# 
+# Test case 7: Sending is successful.
+# Test case 7: Recieving is successful.
+# 
+# Test case 8: Sending is successful.
+# Test case 8: Recieving is successful.
+# 
+# Test case 9: Sending is successful.
+# Test case 9: Recieving is successful.
+# 
+# Test case 10: Sending is successful.
+# Test case 10: Recieving is successful.
+# 
+# 
+# Number of failed sending cases:  0
+# Number of failed recieving cases:  0
+# ** Note: $finish    : C:/Users/abdo/Desktop/modelSim/Serial Peripheral Interface/verlogCodes/Slave_tb.v(381)
+#    Time: 800 ps  Iteration: 0  Instance: /slave_tb
+# 1
+# Break in Module slave_tb at C:/Users/abdo/Desktop/modelSim/Serial Peripheral Interface/verlogCodes/Slave_tb.v line 381
+quit -sim
+# End time: 09:38:29 on Jun 01,2021, Elapsed time: 0:00:12
+# Errors: 0, Warnings: 2
